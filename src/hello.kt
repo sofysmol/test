@@ -39,15 +39,6 @@ interface Mailer {
     fun sendMessage(email: String, message: String)
 }
 
-fun eval(expr: Expr): Int =
-        when (expr) {
-            is Num -> (expr as Num).value
-            is Sum -> {
-                val sum=expr as Sum
-                eval(sum.left) + eval(sum.right)
-            }
-            else -> throw IllegalArgumentException("Unknown expression")
-        }
 
 interface Expr
 class Num(val value: Int) : Expr
